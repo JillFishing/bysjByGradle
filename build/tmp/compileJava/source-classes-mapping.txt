@@ -1,0 +1,124 @@
+cn/edu/sdjzu/xg/bysj/domain/User.java
+ cn.edu.sdjzu.xg.bysj.domain.User
+cn/edu/sdjzu/xg/bysj/domain/GraduateProject.java
+ cn.edu.sdjzu.xg.bysj.domain.GraduateProject
+cn/edu/sdjzu/xg/bysj/controller/basic/TeacherController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.TeacherController
+util/Helper.java
+ util.Helper
+cn/edu/sdjzu/xg/bysj/dao/GraduateProjectCategoryDao.java
+ cn.edu.sdjzu.xg.bysj.dao.GraduateProjectCategoryDao
+cn/edu/sdjzu/xg/bysj/service/GraduateProjectStatusService.java
+ cn.edu.sdjzu.xg.bysj.service.GraduateProjectStatusService
+cn/edu/sdjzu/xg/bysj/controller/basic/DepartmentController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.DepartmentController
+cn/edu/sdjzu/xg/bysj/domain/Student.java
+ cn.edu.sdjzu.xg.bysj.domain.Student
+exception/BysjException.java
+ exception.BysjException
+util/SerializableTool.java
+ util.SerializableTool
+util/Pagination.java
+ util.Pagination
+cn/edu/sdjzu/xg/bysj/controller/basic/GraduateProjectTypeController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.GraduateProjectTypeController
+cn/edu/sdjzu/xg/bysj/service/DepartmentService.java
+ cn.edu.sdjzu.xg.bysj.service.DepartmentService
+util/JdbcHelper.java
+ util.JdbcHelper
+cn/edu/sdjzu/xg/bysj/domain/GraduateProjectCategory.java
+ cn.edu.sdjzu.xg.bysj.domain.GraduateProjectCategory
+cn/edu/sdjzu/xg/bysj/domain/authority/ActorAssRole.java
+ cn.edu.sdjzu.xg.bysj.domain.authority.ActorAssRole
+cn/edu/sdjzu/xg/bysj/dao/TeacherDao.java
+ cn.edu.sdjzu.xg.bysj.dao.TeacherDao
+cn/edu/sdjzu/xg/bysj/domain/Department.java
+ cn.edu.sdjzu.xg.bysj.domain.Department
+cn/edu/sdjzu/xg/bysj/dao/DegreeDao.java
+ cn.edu.sdjzu.xg.bysj.dao.DegreeDao
+cn/edu/sdjzu/xg/bysj/dao/MajorDao.java
+ cn.edu.sdjzu.xg.bysj.dao.MajorDao
+cn/edu/sdjzu/xg/bysj/service/TeacherService.java
+ cn.edu.sdjzu.xg.bysj.service.TeacherService
+util/IdService.java
+ util.IdService
+cn/edu/sdjzu/xg/bysj/dao/ProfTitleDao.java
+ cn.edu.sdjzu.xg.bysj.dao.ProfTitleDao
+cn/edu/sdjzu/xg/bysj/domain/StudentClass.java
+ cn.edu.sdjzu.xg.bysj.domain.StudentClass
+exception/UsernameDuplicateException.java
+ exception.UsernameDuplicateException
+cn/edu/sdjzu/xg/bysj/service/DegreeService.java
+ cn.edu.sdjzu.xg.bysj.service.DegreeService
+cn/edu/sdjzu/xg/bysj/service/GraduateProjectService.java
+ cn.edu.sdjzu.xg.bysj.service.GraduateProjectService
+cn/edu/sdjzu/xg/bysj/controller/basic/StudentController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.StudentController
+cn/edu/sdjzu/xg/bysj/domain/Major.java
+ cn.edu.sdjzu.xg.bysj.domain.Major
+cn/edu/sdjzu/xg/bysj/domain/authority/Actor.java
+ cn.edu.sdjzu.xg.bysj.domain.authority.Actor
+cn/edu/sdjzu/xg/bysj/service/GraduateProjectCategoryService.java
+ cn.edu.sdjzu.xg.bysj.service.GraduateProjectCategoryService
+cn/edu/sdjzu/xg/bysj/controller/basic/ProfTitleController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.ProfTitleController
+cn/edu/sdjzu/xg/bysj/dao/GraduateProjectStatusDao.java
+ cn.edu.sdjzu.xg.bysj.dao.GraduateProjectStatusDao
+cn/edu/sdjzu/xg/bysj/dao/GraduateProjectTypeDao.java
+ cn.edu.sdjzu.xg.bysj.dao.GraduateProjectTypeDao
+cn/edu/sdjzu/xg/bysj/domain/Teacher.java
+ cn.edu.sdjzu.xg.bysj.domain.Teacher
+util/ControllerHelper.java
+ util.ControllerHelper
+cn/edu/sdjzu/xg/bysj/domain/GraduateProjectType.java
+ cn.edu.sdjzu.xg.bysj.domain.GraduateProjectType
+cn/edu/sdjzu/xg/bysj/domain/ProfTitle.java
+ cn.edu.sdjzu.xg.bysj.domain.ProfTitle
+util/InitServlet.java
+ util.InitServlet
+cn/edu/sdjzu/xg/bysj/domain/School.java
+ cn.edu.sdjzu.xg.bysj.domain.School
+cn/edu/sdjzu/xg/bysj/domain/Degree.java
+ cn.edu.sdjzu.xg.bysj.domain.Degree
+util/JSONUtil.java
+ util.JSONUtil
+cn/edu/sdjzu/xg/bysj/service/MajorService.java
+ cn.edu.sdjzu.xg.bysj.service.MajorService
+cn/edu/sdjzu/xg/bysj/controller/basic/DegreeController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.DegreeController
+util/Condition.java
+ util.Condition
+util/WebUtil.java
+ util.WebUtil
+cn/edu/sdjzu/xg/bysj/domain/authority/RoleAssResource.java
+ cn.edu.sdjzu.xg.bysj.domain.authority.RoleAssResource
+cn/edu/sdjzu/xg/bysj/service/SchoolService.java
+ cn.edu.sdjzu.xg.bysj.service.SchoolService
+cn/edu/sdjzu/xg/bysj/domain/authority/Resource.java
+ cn.edu.sdjzu.xg.bysj.domain.authority.Resource
+cn/edu/sdjzu/xg/bysj/service/UserService.java
+ cn.edu.sdjzu.xg.bysj.service.UserService
+cn/edu/sdjzu/xg/bysj/service/GraduateProjectTypeService.java
+ cn.edu.sdjzu.xg.bysj.service.GraduateProjectTypeService
+cn/edu/sdjzu/xg/bysj/dao/UserDao.java
+ cn.edu.sdjzu.xg.bysj.dao.UserDao
+cn/edu/sdjzu/xg/bysj/domain/GraduateProjectStatus.java
+ cn.edu.sdjzu.xg.bysj.domain.GraduateProjectStatus
+cn/edu/sdjzu/xg/bysj/domain/authority/Role.java
+ cn.edu.sdjzu.xg.bysj.domain.authority.Role
+util/TxtHelper.java
+ util.TxtHelper
+util/WebHelper.java
+ util.WebHelper
+cn/edu/sdjzu/xg/bysj/dao/SchoolDao.java
+ cn.edu.sdjzu.xg.bysj.dao.SchoolDao
+cn/edu/sdjzu/xg/bysj/dao/DepartmentDao.java
+ cn.edu.sdjzu.xg.bysj.dao.DepartmentDao
+cn/edu/sdjzu/xg/bysj/service/ProfTitleService.java
+ cn.edu.sdjzu.xg.bysj.service.ProfTitleService
+cn/edu/sdjzu/xg/bysj/controller/basic/SchoolController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.SchoolController
+cn/edu/sdjzu/xg/bysj/service/StudentService.java
+ cn.edu.sdjzu.xg.bysj.service.StudentService
+cn/edu/sdjzu/xg/bysj/dao/StudentDao.java
+ cn.edu.sdjzu.xg.bysj.dao.StudentDao
