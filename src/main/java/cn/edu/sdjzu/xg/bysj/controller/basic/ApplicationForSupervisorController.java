@@ -16,16 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 @WebServlet("/app.ctl")
 public class ApplicationForSupervisorController extends HttpServlet {
-    /*Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);*/
+    Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -52,11 +50,10 @@ public class ApplicationForSupervisorController extends HttpServlet {
         }catch (SQLException e){
             message.put("message", "数据库操作异常");
             e.printStackTrace();
-            /*logger.error(e.getMessage());*/
+            logger.error(e.getMessage());
         }catch(Exception e){
             message.put("message", "网络异常");
-            e.printStackTrace();
-            /*logger.error(e.getMessage());*/
+            logger.error(e.getMessage());
         }//响应message到前端
         response.getWriter().println(message);
     }

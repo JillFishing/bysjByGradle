@@ -1,6 +1,5 @@
 package cn.edu.sdjzu.xg.bysj.service;
-
-
+//201902104050 姜瑞临
 import cn.edu.sdjzu.xg.bysj.dao.GraduateProjectCategoryDao;
 import cn.edu.sdjzu.xg.bysj.domain.GraduateProjectCategory;
 import util.JdbcHelper;
