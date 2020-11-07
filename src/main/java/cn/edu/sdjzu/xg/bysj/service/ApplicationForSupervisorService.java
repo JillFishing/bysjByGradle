@@ -7,6 +7,8 @@ import util.JdbcHelper;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
 
 public class ApplicationForSupervisorService {
     private static ApplicationForSupervisorDao applicationForSupervisorDao = ApplicationForSupervisorDao.getInstance();
@@ -16,7 +18,7 @@ public class ApplicationForSupervisorService {
     public static ApplicationForSupervisorService getInstance(){
         return applicationForSupervisorService;
     }
-    public boolean add(ApplicationForSupervisorEntry[] applicationForSupervisorEntries,
+    public boolean add(List<ApplicationForSupervisorEntry> applicationForSupervisorEntries,
                        String selfIntro, Student student) throws SQLException {
         Connection conn = JdbcHelper.getConn();
         boolean add = applicationForSupervisorDao.add(applicationForSupervisorEntries,selfIntro,student,conn);

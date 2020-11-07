@@ -16,6 +16,14 @@ public final class Student implements Comparable<Student>,Serializable{
 		this.id = IdService.getId();
 	}
 
+	public Student(Integer id, String name, String no, String remarks, Teacher supervisor) {
+		this.id = id;
+		this.name = name;
+		this.no = no;
+		this.remarks = remarks;
+		this.supervisor = supervisor;
+	}
+
 	public Student(String name, String no, String remarks, StudentClass studentClass, Teacher supervisor) {
 		this(name, no, remarks, studentClass);
 		this.supervisor = supervisor;

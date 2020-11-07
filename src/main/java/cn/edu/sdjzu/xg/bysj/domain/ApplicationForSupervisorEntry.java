@@ -4,9 +4,13 @@ import java.io.Serializable;
 
 /**
   * 表示一个目标导师和对应的志愿顺序
-  * 本类使用了 lombok 注解
  */
 public class ApplicationForSupervisorEntry implements Comparable<ApplicationForSupervisorEntry>, Serializable {
+    public ApplicationForSupervisorEntry(Teacher teacher, int priority) {
+        this.teacher = teacher;
+        this.priority = priority;
+    }
+
     //本类不需要 id
     //目标导师
     private Teacher teacher;

@@ -51,7 +51,11 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 		this.department = department;
 	}
 
-    public Integer getId() {
+	public Teacher(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -61,6 +65,18 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 
 	public String getNo() {
 		return no;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public ProfTitle getProfTitle() {
+		return profTitle;
+	}
+
+	public void setProfTitle(ProfTitle profTitle) {
+		this.profTitle = profTitle;
 	}
 
 	public void setNo(String no) {
