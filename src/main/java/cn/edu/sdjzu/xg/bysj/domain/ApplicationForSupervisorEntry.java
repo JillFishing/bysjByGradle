@@ -1,10 +1,14 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import lombok.*;
+
 import java.io.Serializable;
 
 /**
   * 表示一个目标导师和对应的志愿顺序
  */
+@Setter
+@Getter
 public class ApplicationForSupervisorEntry implements Comparable<ApplicationForSupervisorEntry>, Serializable {
     public ApplicationForSupervisorEntry(Teacher teacher, int priority) {
         this.teacher = teacher;
