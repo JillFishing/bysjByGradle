@@ -3,7 +3,8 @@ package cn.edu.sdjzu.xg.bysj.domain;
 import util.IdService;
 
 import java.io.Serializable;
-
+@Setter
+@Getter
 public final class Degree implements
 		Comparable<Degree>,Serializable{
 	private Integer id;

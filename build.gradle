@@ -22,6 +22,8 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api
     compile group: 'org.apache.tomcat', name: 'tomcat-servlet-api', version: '9.0.39'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java

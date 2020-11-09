@@ -1,7 +1,8 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
 import java.io.Serializable;
-
+@Setter
+@Getter
 public final class GraduateProjectCategory implements Comparable<GraduateProjectCategory>,Serializable{
 	private Integer id;
 	private String description;

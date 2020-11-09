@@ -3,7 +3,8 @@ package cn.edu.sdjzu.xg.bysj.domain;
 import util.IdService;
 
 import java.io.Serializable;
-
+@Setter
+@Getter
 public final class GraduateProjectStatus implements Comparable<GraduateProjectStatus>,Serializable{
 	private Integer id;//对应着数据库表中的非业务主键 object id
 	private String description;
