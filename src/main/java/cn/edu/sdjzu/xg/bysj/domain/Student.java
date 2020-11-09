@@ -1,5 +1,7 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
+import cn.edu.sdjzu.xg.bysj.service.TeacherService;
 import lombok.Getter;
 import lombok.Setter;
 import util.IdService;
@@ -7,7 +9,7 @@ import util.IdService;
 import java.io.Serializable;
 @Setter
 @Getter
-public final class Student implements Comparable<Student>,Serializable{
+public final class Student extends Actor implements Comparable<Student>,Serializable{
 	private Integer id;
 	private String name;
 	private String no;
@@ -20,6 +22,7 @@ public final class Student implements Comparable<Student>,Serializable{
 	}
 
 	public Student(Integer id, String name, String no, String remarks, Teacher supervisor) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.no = no;
@@ -54,6 +57,16 @@ public final class Student implements Comparable<Student>,Serializable{
 	public Student(String name, String no, String remarks, Teacher teacher) {
 		this(name, no, remarks);
 		this.supervisor = teacher;
+	}
+
+	public Student(String name, String no) {
+		this.name = name;
+		this.no = no;
+	}
+
+	public Student(String name, String no,Teacher supervisor) {
+		this(name, no);
+		this.supervisor = supervisor;
 	}
 
 	@Override

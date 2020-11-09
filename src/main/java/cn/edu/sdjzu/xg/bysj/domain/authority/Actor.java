@@ -1,17 +1,15 @@
 package cn.edu.sdjzu.xg.bysj.domain.authority;
 
-import java.util.Collection;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Collection;
+@Getter
+@Setter
 public abstract class Actor {	
 	private Collection<ActorAssRole> actorAssRoles;
+	public Integer id;
+	public String name;
+	public String no;
 
-	public Collection<ActorAssRole> getActorAssRoles() {
-		return actorAssRoles;
-	}
-
-	public void setActorAssRoles(Collection<ActorAssRole> actorAssRoles) {
-		this.actorAssRoles = actorAssRoles;
-	}
-	
-	public abstract String getName();
 }

@@ -58,10 +58,11 @@ public final class UserDao {
     }
 
     public int add(User user, Connection conn) throws SQLException {
-        PreparedStatement statement = conn.prepareStatement("Insert into user_odd(username,password)Values(?,?)",
+        PreparedStatement statement = conn.prepareStatement("Insert into user(username,password,actor_id)Values(?,?,?)",
                 Statement.RETURN_GENERATED_KEYS);
         statement.setString(1,user.getUsername());
         statement.setString(2,user.getPassword());
+        statement.setInt(3,user.getActor().getId());
         int affected = statement.executeUpdate();
         int id_user = 0;
         ResultSet results = statement.getGeneratedKeys();
@@ -78,7 +79,7 @@ public final class UserDao {
         try (statement) {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
-            statement.setInt(3, user.getTeacher().getId());
+            statement.setInt(3, user.getActor().getId());
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {

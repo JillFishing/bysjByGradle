@@ -1,15 +1,15 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
 import util.IdService;
 
 import java.io.Serializable;
 import java.util.Set;
-@Setter
-@Getter
-public final class Teacher implements Comparable<Teacher>,Serializable {
-	private static final long serialVersionUID = 1L;
+
+public final class Teacher
+		extends Actor
+		implements Comparable<Teacher>, Serializable{
+
 	private Integer id;
 	private String no;
 	private String name;
@@ -17,18 +17,19 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 	private ProfTitle profTitle;
 	private Degree degree;
 	private Department department;
-	private Set<GraduateProject> projects;
-	private Set<Student> students;
+
+//	private Set<GraduateProject> projects;
+//	private Set<Student> students;
 
 	{
 		this.id = IdService.getId();
 	}
 
 	public Teacher(Integer id,
-				   String name,
-				   String no,
-				   ProfTitle title,
-				   Degree degree,
+                   String name,
+                   String no,
+                   ProfTitle title,
+                   Degree degree,
                    Department department) {
 		this(name, no, title, degree, department);
 		this.id = id;
@@ -36,7 +37,7 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 	}
 
 	public Teacher(
-			String name, String no) {
+            String name, String no) {
 		super();
 		this.name = name;
 		this.no = no;
@@ -54,15 +55,77 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 		this.department = department;
 	}
 
-	public Teacher(Integer id) {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	//属性名为Title，字段名为profTitle
+	public ProfTitle getTitle() {
+		return this.profTitle;
+	}
+	//属性名为Title，字段名为profTitle
+	public void setTitle(ProfTitle title) {
+		this.profTitle = title;
+	}
+
+	public Degree getDegree() {
+		return degree;
+	}
+
+	public void setDegree(Degree degree) {
+		this.degree = degree;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+//	public Set<GraduateProject> getProjects() {
+//		return projects;
+//	}
+//
+//	public void setProjects(Set<GraduateProject> projects) {
+//		this.projects = projects;
+//	}
+//
+//	public Set<Student> getStudents() {
+//		return students;
+//	}
+//
+//	public void setStudents(Set<Student> students) {
+//		this.students = students;
+//	}
 
 	@Override
 	public int compareTo(Teacher other) {
 		// no为排序依据
 		return this.no.compareTo(other.no);
 	}
+
 
 	/**
 	 * Constructs a <code>String</code> with all attributes
@@ -84,7 +147,7 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 	        + "title = " + this.profTitle + TAB
 	        + "degree = " + this.degree + TAB
 	        + "department = " + this.department + TAB
-	        + "projects = " + this.projects + TAB
+//	        + "projects = " + this.projects + TAB
 	        + " )";
 	
 	    return retValue;

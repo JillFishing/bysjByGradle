@@ -30,30 +30,6 @@ public class ApplicationForSupervisorEntry implements Comparable<ApplicationForS
         this.priority = priority;
         this.applicationForSupervisor = applicationForSupervisor;
     }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public ApplicationForSupervisor getApplicationForSupervisor() {
-        return applicationForSupervisor;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    public void setApplicationForSupervisor(ApplicationForSupervisor applicationForSupervisor) {
-        this.applicationForSupervisor = applicationForSupervisor;
-    }
     @Override
     public int compareTo(ApplicationForSupervisorEntry applicationForSupervisorEntry) {
         return this.priority - applicationForSupervisorEntry.priority;

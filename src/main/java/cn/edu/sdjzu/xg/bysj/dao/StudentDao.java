@@ -24,7 +24,7 @@ public class StudentDao {
         Collection<Student> schools = new TreeSet<Student>();
         int totalNum = SchoolDao.getInstance().count(conn);
         //创建查询的主句
-        StringBuilder select = new StringBuilder("SELECT * from student_odd ");
+        StringBuilder select = new StringBuilder("SELECT * from student ");
         //将可能的条件附加到主句后
         if (condition != null){
             String clause = Condition.toWhereClause(condition);
@@ -42,8 +42,6 @@ public class StudentDao {
             String no = results.getString("no");
             String remarks = results.getString("remarks");
             Teacher supervisor  = TeacherService.getInstance().find(results.getInt("teacher_id"));
-            /*Integer studentClass_id = results.getInt("studentClass_id");
-            Integer supervisor_id  = results.getInt("supervisor_id");*/
             Student student = new Student(name,no,remarks,supervisor);
             schools.add(student);
         }
@@ -56,7 +54,7 @@ public class StudentDao {
         Collection<Student> schools = new TreeSet<Student>();
         int totalNum = SchoolDao.getInstance().count(conn);
         //创建查询的主句
-        StringBuilder select = new StringBuilder("SELECT * from student_odd ");
+        StringBuilder select = new StringBuilder("SELECT * from student ");
         //将可能的条件附加到主句后
         if (teacher != null){
             select.append(" where teacher_id= "+teacher.getId()+" ");
@@ -86,7 +84,7 @@ public class StudentDao {
     //查找单条的方法
     public Student find(Integer id,Connection conn) throws SQLException {
         //创建SQL语句
-        String search = "SELECT * from student_odd where id = " + id;
+        String search = "SELECT * from student where id = " + id;
         //在连接上创建语句盒子对象
         Statement statement = conn.createStatement();
         try(statement){
@@ -107,13 +105,13 @@ public class StudentDao {
     //更新方法
     public boolean update(Student student,Connection conn) throws SQLException {
         //使用预编译创建SQL语句
-        String update = "update student_odd set description = ?,no= ?,remarks= ?,teacher_id= ? where id = " + student.getId();
+        String update = "update student set id= ? name = ?,no= ?,teacher_id= ? where no = " + student.getNo();
         PreparedStatement statement = conn.prepareStatement(update);
         //执行SQL语句并返回结果和关闭连接
         try (statement) {
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getNo());
-            statement.setString(3, student.getRemarks());
+            statement.setInt(1, student.getId());
+            statement.setString(2, student.getName());
+            statement.setString(3, student.getNo());
             statement.setInt(4, student.getSupervisor().getId());
             statement.executeUpdate();
             return true;
@@ -124,13 +122,13 @@ public class StudentDao {
     //添加方法
     public boolean add(Student student,Connection conn) throws SQLException {
         //使用预编译创建SQL语句
-        String create = "insert into student_odd(description,no,remarks,teacher_id) values (?,?,?,?)";
+        String create = "insert into student(id,name,no,teacher_id) values (?,?,?,?)";
         PreparedStatement statement = conn.prepareStatement(create);
         //执行SQL语句并返回结果和关闭连接
         try (statement) {
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getNo());
-            statement.setString(3, student.getRemarks());
+            statement.setInt(1, student.getId());
+            statement.setString(2, student.getName());
+            statement.setString(3, student.getNo());
             statement.setInt(4, student.getSupervisor().getId());
             statement.executeUpdate();
             return true;

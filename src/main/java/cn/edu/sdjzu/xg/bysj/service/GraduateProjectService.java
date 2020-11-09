@@ -3,14 +3,6 @@ package cn.edu.sdjzu.xg.bysj.service;
 
 /*import cn.edu.sdjzu.xg.bysj.dao.GraduateProjectDao;*/
 
-import cn.edu.sdjzu.xg.bysj.domain.GraduateProject;
-import cn.edu.sdjzu.xg.bysj.domain.GraduateProjectStatus;
-import cn.edu.sdjzu.xg.bysj.domain.Teacher;
-
-import java.sql.SQLException;
-import java.util.Collection;
-import java.util.HashSet;
-
 public final class GraduateProjectService {}
 /*	private GraduateProjectDao graduateProjectDao= GraduateProjectDao.getInstance();
 	private static GraduateProjectService graduateProjectService;

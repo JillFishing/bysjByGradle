@@ -22,7 +22,7 @@ public final class TeacherService {
 		return teacherService;
 	}
 	
-	public Collection<Teacher> findAll(Pagination pagination,String condition) throws SQLException {
+	public Collection<Teacher> findAll(Pagination pagination, String condition) throws SQLException {
 		Connection conn = JdbcHelper.getConn();
 		Collection<Teacher> teachers = teacherDao.findAll(pagination,condition,conn);
 		conn.close();
@@ -57,7 +57,7 @@ public final class TeacherService {
 			int userId = UserDao.getInstance().add(user,conn);
 			user.setId(userId);
 			teacherDao.update(teacher,conn);
-			user.setTeacher(teacher);
+			user.setActor(teacher);
 			UserDao.getInstance().update(user,conn);
 
 		}catch (SQLException e){

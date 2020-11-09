@@ -19,7 +19,7 @@ public final class TeacherDao {
         return teacherDao;
     }
 
-    public Collection<Teacher> findAll(Pagination pagination,String condition, Connection conn) throws SQLException{
+    public Collection<Teacher> findAll(Pagination pagination, String condition, Connection conn) throws SQLException{
         //创建集合类对象，用来保存并排序所有获得的teacher对象
         Collection<Teacher> teachers = new TreeSet<Teacher>();
         int totalNum = teacherDao.getInstance().count(conn);
@@ -49,7 +49,7 @@ public final class TeacherDao {
         return teachers;
     }
 
-    public Teacher find(Integer id,Connection conn) throws SQLException {
+    public Teacher find(Integer id, Connection conn) throws SQLException {
         Teacher desiredTeacher = null;
         String search = "select * from teacher_odd where id=" + id;
         PreparedStatement statement = conn.prepareStatement(search);
@@ -67,7 +67,7 @@ public final class TeacherDao {
         return desiredTeacher;
     }
 
-    public boolean update(Teacher teacher,Connection conn) throws SQLException{
+    public boolean update(Teacher teacher, Connection conn) throws SQLException{
         //使用预编译创建SQL语句
         String update = "update teacher_odd set name = ?,no = ? where id = " + teacher.getId();
         PreparedStatement statement = conn.prepareStatement(update);
@@ -82,7 +82,7 @@ public final class TeacherDao {
         }
     }
 
-    public int add(Teacher teacher,Connection conn) throws SQLException{
+    public int add(Teacher teacher, Connection conn) throws SQLException{
         //准备语句对象
         String add = "Insert into teacher_odd(name,no) values(?,?)";
         PreparedStatement statement = conn.prepareStatement(add, Statement.RETURN_GENERATED_KEYS);

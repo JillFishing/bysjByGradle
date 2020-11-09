@@ -1,33 +1,34 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 @Setter
 @Getter
-public class User  implements Comparable<User>,Serializable{
+public class User implements Comparable<User>,Serializable{
 	private Integer id;
 	private String username;
 	private String password;
 	private LocalDateTime loginTime;
-	private Teacher teacher;
+	private Actor actor;
 	
 	public User(){}
 
 	public User(String username, String password, LocalDateTime loginTime,
-				Teacher teacher) {
+				Actor teacher) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.loginTime = loginTime;
-		this.teacher = teacher;
+		this.actor = teacher;
 	}
 
 	public User(Integer id, String username, String password, LocalDateTime loginTime,
-				Teacher teacher) {
+				Actor teacher) {
 		this(username, password, loginTime, teacher);
 		this.id = id;
 	}
@@ -51,7 +52,7 @@ public class User  implements Comparable<User>,Serializable{
 	        + "username = " + this.username + TAB
 	        + "password = " + this.password + TAB
 	        + "loginTime = " + this.loginTime + TAB
-	        + "teacher = " + this.teacher + TAB
+	        + "teacher = " + this.actor + TAB
 	        + " )";
 	
 	    return retValue;
