@@ -30,7 +30,7 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
-
+    annotationProcessor('org.projectlombok:lombok:1.18.16')
 }
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"

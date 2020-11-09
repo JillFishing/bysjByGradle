@@ -3,11 +3,14 @@ package cn.edu.sdjzu.xg.bysj.domain;
 import java.io.Serializable;
 import java.util.Collection;
 import lombok.*;
+import lombok.experimental.Accessors;
+
 /**
  * 表示学生提交的选择导师的志愿。
  */
 @Setter
 @Getter
+@Accessors
 public final class ApplicationForSupervisor implements
         Comparable<ApplicationForSupervisor>, Serializable {
     //志愿集合
