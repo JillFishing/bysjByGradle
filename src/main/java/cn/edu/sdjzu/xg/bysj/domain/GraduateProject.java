@@ -3,6 +3,7 @@ package cn.edu.sdjzu.xg.bysj.domain;
 import util.IdService;
 
 import java.io.Serializable;
+import lombok.*;
 @Setter
 @Getter
 public final class GraduateProject implements Comparable<GraduateProject>,Serializable{
@@ -11,7 +12,6 @@ public final class GraduateProject implements Comparable<GraduateProject>,Serial
 	private GraduateProjectCategory graduateProjectCategory;
 	private GraduateProjectType graduateProjectType;
 	private GraduateProjectStatus graduateProjectStatus;
-
 	private Teacher teacher;
 	{
 		this.id = IdService.getId();
@@ -21,39 +21,7 @@ public final class GraduateProject implements Comparable<GraduateProject>,Serial
 		super();
 	}
 
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
-	public GraduateProjectCategory getGraduateProjectCategory() {
-		return graduateProjectCategory;
-	}
-
-	public void setGraduateProjectCategory(GraduateProjectCategory graduateProjectCategory) {
-		this.graduateProjectCategory = graduateProjectCategory;
-	}
-
-	public GraduateProjectType getGraduateProjectType() {
-		return graduateProjectType;
-	}
-	public void setGraduateProjectType(GraduateProjectType graduateProjectType) {
-		this.graduateProjectType = graduateProjectType;
-	}
-	public Teacher getTeacher() {
-		return teacher;
-	}
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
 
 
 	public GraduateProject(int id, String title,
@@ -63,13 +31,6 @@ public final class GraduateProject implements Comparable<GraduateProject>,Serial
 		this.id = id;
 	}
 
-	public GraduateProjectStatus getGraduateProjectStatus() {
-		return graduateProjectStatus;
-	}
-
-	public void setGraduateProjectStatus(GraduateProjectStatus graduateProjectStatus) {
-		this.graduateProjectStatus = graduateProjectStatus;
-	}
 
 	public GraduateProject(String title,
 						   GraduateProjectCategory graduateProjectCategory,
@@ -139,12 +100,5 @@ public final class GraduateProject implements Comparable<GraduateProject>,Serial
 	
 	    return retValue;
 	}
-	
-	public static void main(String[] args){
-		GraduateProject g1 = new GraduateProject();
-		GraduateProject g2 = new GraduateProject();
-		System.out.println(g1);
-		System.out.println(g2);
-		
-	}
+
 }

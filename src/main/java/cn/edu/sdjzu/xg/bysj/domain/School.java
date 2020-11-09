@@ -1,9 +1,12 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import util.IdService;
 
 import java.io.Serializable;
-
+@Setter
+@Getter
 public final class School implements Comparable<School>,Serializable{
 	private Integer id;//对应着数据库表中的非业务主键 object id
 	private String no;
@@ -21,38 +24,6 @@ public final class School implements Comparable<School>,Serializable{
 		super();
 		this.description = description;
 		this.no = no;
-		this.remarks = remarks;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getNo() {
-		return no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
 

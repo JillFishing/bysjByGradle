@@ -1,7 +1,7 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import lombok.*;
 import util.IdService;
-
 import java.io.Serializable;
 @Setter
 @Getter
@@ -22,38 +22,6 @@ public final class GraduateProjectStatus implements Comparable<GraduateProjectSt
 		super();
 		this.description = description;
 		this.no = no;
-		this.remarks = remarks;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getNo() {
-		return no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
 

@@ -1,6 +1,7 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
 import java.io.Serializable;
+import lombok.*;
 @Setter
 @Getter
 public final class GraduateProjectCategory implements Comparable<GraduateProjectCategory>,Serializable{
@@ -17,56 +18,6 @@ public final class GraduateProjectCategory implements Comparable<GraduateProject
 		this.no = no;
 		this.remarks = remarks;
 	}
-	
-	
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-
-	public String getNo() {
-		return no;
-	}
-
-
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-
 
 	/**
 	 * Constructs a <code>String</code> with all attributes

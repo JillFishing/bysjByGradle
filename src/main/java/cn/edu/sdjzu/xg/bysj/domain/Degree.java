@@ -3,6 +3,7 @@ package cn.edu.sdjzu.xg.bysj.domain;
 import util.IdService;
 
 import java.io.Serializable;
+import lombok.*;
 @Setter
 @Getter
 public final class Degree implements
@@ -23,46 +24,6 @@ public final class Degree implements
 		this.no = no;
 		this.remarks = remarks;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public String getNo() {
-		return no;
-	}
-
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-
 
 	@Override
 	public int hashCode() {

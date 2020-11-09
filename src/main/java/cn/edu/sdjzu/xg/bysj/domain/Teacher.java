@@ -1,10 +1,13 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import util.IdService;
 
 import java.io.Serializable;
 import java.util.Set;
-
+@Setter
+@Getter
 public final class Teacher implements Comparable<Teacher>,Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -55,89 +58,11 @@ public final class Teacher implements Comparable<Teacher>,Serializable {
 		this.id = id;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNo() {
-		return no;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-	public ProfTitle getProfTitle() {
-		return profTitle;
-	}
-
-	public void setProfTitle(ProfTitle profTitle) {
-		this.profTitle = profTitle;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	//属性名为Title，字段名为profTitle
-	public ProfTitle getTitle() {
-		return this.profTitle;
-	}
-	//属性名为Title，字段名为profTitle
-	public void setTitle(ProfTitle title) {
-		this.profTitle = title;
-	}
-
-	public Degree getDegree() {
-		return degree;
-	}
-
-	public void setDegree(Degree degree) {
-		this.degree = degree;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
-	public Set<GraduateProject> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(Set<GraduateProject> projects) {
-		this.projects = projects;
-	}
-
-	public Set<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
-
 	@Override
 	public int compareTo(Teacher other) {
 		// no为排序依据
 		return this.no.compareTo(other.no);
 	}
-
 
 	/**
 	 * Constructs a <code>String</code> with all attributes

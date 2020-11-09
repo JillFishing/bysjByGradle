@@ -1,9 +1,12 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import util.IdService;
 
 import java.io.Serializable;
-
+@Setter
+@Getter
 public final class Student implements Comparable<Student>,Serializable{
 	private Integer id;
 	private String name;
@@ -51,54 +54,6 @@ public final class Student implements Comparable<Student>,Serializable{
 	public Student(String name, String no, String remarks, Teacher teacher) {
 		this(name, no, remarks);
 		this.supervisor = teacher;
-	}
-
-    public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getNo() {
-		return no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-
-	public StudentClass getStudentClass() {
-		return studentClass;
-	}
-
-	public Teacher getSupervisor() {
-		return supervisor;
-	}
-
-	public void setSupervisor(Teacher supervisor) {
-		this.supervisor = supervisor;
-	}
-
-	public void setStudentClass(StudentClass studentClass) {
-		this.studentClass = studentClass;
 	}
 
 	@Override
