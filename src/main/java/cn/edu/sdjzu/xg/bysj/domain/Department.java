@@ -1,7 +1,5 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
-import util.IdService;
-
 import java.io.Serializable;
 import lombok.*;
 @Setter
@@ -12,9 +10,7 @@ public final class Department implements Comparable<Department>,Serializable{
 	private String no;
 	private String remarks;
 	private School school;
-	{
-		this.id = IdService.getId();
-	}
+
 	public Department(Integer id, String description, String no,
 			String remarks, School school) {
 		this(description, no, remarks, school);

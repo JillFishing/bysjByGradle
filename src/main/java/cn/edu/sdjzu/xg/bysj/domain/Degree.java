@@ -1,7 +1,5 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
-import util.IdService;
-
 import java.io.Serializable;
 import lombok.*;
 @Setter
@@ -12,9 +10,6 @@ public final class Degree implements
 	private String description;
 	private String no;
 	private String remarks;
-	{
-		this.id = IdService.getId();
-	}
 	public Degree(Integer id, String description, String no, String remarks) {
 		this(description, no, remarks);
 		this.id = id;

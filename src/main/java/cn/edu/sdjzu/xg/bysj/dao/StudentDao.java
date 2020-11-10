@@ -139,7 +139,7 @@ public class StudentDao {
     //删除方法
     public boolean delete(Integer id,Connection conn) throws SQLException {
         //创建删除语句
-        String delete = "delete from student_odd where id = " + id;
+        String delete = "delete from student where id = " + id;
         //在连接上创建语句盒子对象
         Statement statement = conn.createStatement();
         //执行SQL语句
@@ -150,7 +150,7 @@ public class StudentDao {
         return (i>0);
     }
     public int count(Connection connection) throws SQLException {
-        String sql_count = "SELECT COUNT(id) as cnt FROM student_odd";
+        String sql_count = "SELECT COUNT(id) as cnt FROM student";
         PreparedStatement pstmt_count = connection.prepareStatement(sql_count);
         int counter = 0;
         ResultSet resultSet_count = pstmt_count.executeQuery();

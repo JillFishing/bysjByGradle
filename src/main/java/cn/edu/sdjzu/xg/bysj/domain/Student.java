@@ -1,10 +1,8 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
 import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
-import cn.edu.sdjzu.xg.bysj.service.TeacherService;
 import lombok.Getter;
 import lombok.Setter;
-import util.IdService;
 
 import java.io.Serializable;
 @Setter
@@ -17,9 +15,7 @@ public final class Student extends Actor implements Comparable<Student>,Serializ
 	private StudentClass studentClass;
 	//导师
 	private Teacher supervisor;
-	{
-		this.id = IdService.getId();
-	}
+
 
 	public Student(Integer id, String name, String no, String remarks, Teacher supervisor) {
 		super();

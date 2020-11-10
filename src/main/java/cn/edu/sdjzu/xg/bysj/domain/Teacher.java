@@ -1,10 +1,8 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
 import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
-import util.IdService;
 
 import java.io.Serializable;
-import java.util.Set;
 
 public final class Teacher
 		extends Actor
@@ -21,9 +19,6 @@ public final class Teacher
 //	private Set<GraduateProject> projects;
 //	private Set<Student> students;
 
-	{
-		this.id = IdService.getId();
-	}
 
 	public Teacher(Integer id,
                    String name,

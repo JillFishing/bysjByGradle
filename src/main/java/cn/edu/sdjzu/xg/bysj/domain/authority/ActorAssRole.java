@@ -1,7 +1,5 @@
 package cn.edu.sdjzu.xg.bysj.domain.authority;
 
-import util.IdService;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,10 +9,6 @@ public class ActorAssRole implements Comparable<ActorAssRole>,Serializable{
 	private Actor actor;
 	private Role role;
 	private Date createTime;
-	
-	{
-		this.id = IdService.getId();
-	}
 
 	public ActorAssRole(Actor actor, Role role, Date createTime) {
 		super();

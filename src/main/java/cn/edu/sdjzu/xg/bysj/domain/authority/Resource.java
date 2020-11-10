@@ -1,7 +1,5 @@
 package cn.edu.sdjzu.xg.bysj.domain.authority;
 
-import util.IdService;
-
 import java.io.Serializable;
 
 public class Resource implements Comparable<Resource>,Serializable {	
@@ -10,10 +8,7 @@ public class Resource implements Comparable<Resource>,Serializable {
 	private String description;
 	private String url;	
 	private String no;
-	
-	{
-		this.id= IdService.getId();
-	}
+
 	
 	public Resource(String description, String url, String no) {
 		super();

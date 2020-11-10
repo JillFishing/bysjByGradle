@@ -1,7 +1,7 @@
 package cn.edu.sdjzu.xg.bysj.domain;
 
 import lombok.*;
-import util.IdService;
+
 import java.io.Serializable;
 @Setter
 @Getter
@@ -10,9 +10,7 @@ public final class GraduateProjectStatus implements Comparable<GraduateProjectSt
 	private String description;
 	private String no;
 	private String remarks;
-	{
-		this.id = IdService.getId();
-	}
+
 	public GraduateProjectStatus(Integer id, String description, String no, String remarks) {
 		this(description, no, remarks);
 		this.id = id;
