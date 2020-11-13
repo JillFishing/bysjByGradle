@@ -53,9 +53,16 @@ public final class JdbcHelper {
 			}
 		}
 	}
-	
-	//关闭、释放资源
 	public static void close(Statement stmt, Connection conn) {
 		JdbcHelper.close(null,stmt,conn);
+	}
+	public static void close(Statement stmt, ResultSet resultSet) {
+		JdbcHelper.close(resultSet,stmt,null);
+	}
+	public static void close(Statement stmt) {
+		JdbcHelper.close(null,stmt,null);
+	}
+	public static void close(Connection conn) throws SQLException {
+		conn.close();
 	}
 }

@@ -3,6 +3,8 @@ package cn.edu.sdjzu.xg.bysj.dao;
 
 import cn.edu.sdjzu.xg.bysj.domain.Student;
 import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
+import cn.edu.sdjzu.xg.bysj.service.StudentService;
+import cn.edu.sdjzu.xg.bysj.service.TeacherService;
 import lombok.Cleanup;
 import util.Condition;
 import util.Pagination;
@@ -60,23 +62,21 @@ public final class ActorDao {
         return desiredTeachers;
     }
 
-    public cn.edu.sdjzu.xg.bysj.domain.authority.Actor find(Integer id, Connection connection) throws SQLException {
-        //创建Teacher类型的引用，暂不创建对象
-        cn.edu.sdjzu.xg.bysj.domain.authority.Actor desiredTeacher = null;
-        String sql_select_id = "SELECT * FROM actor WHERE id = ?";
-        @Cleanup PreparedStatement pstmt_select_id =
-                connection.prepareStatement(sql_select_id);
-        pstmt_select_id.setInt(1, id);
-        @Cleanup ResultSet resultSet_select_id = pstmt_select_id.executeQuery();
-        //如果表中存在id对应的记录，则获得表中的字段值，并创建对象
-        if (resultSet_select_id.next()) {
-            String name = resultSet_select_id.getString("name");
-            String no = resultSet_select_id.getString("no");
-            desiredTeacher = new Student(name, no);
-            desiredTeacher.setId(id);
+    public Actor find(Integer id, Connection conn) throws SQLException {
+        //先后在Sudent和Teacher中查找相应的id
+        Actor desiredActor = null;
+        //查询id对应的Student对象
+        desiredActor = StudentDao.getInstance().find(id, conn);
+        if (desiredActor != null) {
+            return desiredActor;
         }
-        //关闭ResultSet, statement资源
-        return desiredTeacher;
+        desiredActor = TeacherDao.getInstance().find(id, conn);
+        if(desiredActor != null){
+            return desiredActor;
+        }
+        //查询id对应的Teacher对象
+        return desiredActor;
+        //在各子类对象中均未查询到
     }
 
     public boolean update(Actor actor) throws SQLException {

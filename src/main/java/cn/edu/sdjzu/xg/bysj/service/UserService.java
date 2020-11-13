@@ -1,15 +1,14 @@
 package cn.edu.sdjzu.xg.bysj.service;
 
-
-import cn.edu.sdjzu.xg.bysj.dao.TeacherDao;
 import cn.edu.sdjzu.xg.bysj.dao.UserDao;
+import cn.edu.sdjzu.xg.bysj.domain.Degree;
 import cn.edu.sdjzu.xg.bysj.domain.User;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import exception.UsernameDuplicateException;
+import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
 import util.JdbcHelper;
+import util.Pagination;
 
 import java.sql.*;
+import java.util.Collection;
 
 public final class UserService {
 	private UserDao userDao = UserDao.getInstance();
@@ -22,35 +21,45 @@ public final class UserService {
 		return UserService.userService;
 	}
 
-	public String getUsers() throws SQLException {
-		return userDao.findAll();
+	public Collection<User> getUsers(String condition, Pagination pagination) throws SQLException {
+		Connection conn = JdbcHelper.getConn();
+		Collection<User> users = userDao.findAll(conn,condition,pagination);
+		conn.close();
+		return users;
 	}
 	
 	public User getUser(Integer id) throws SQLException {
-		return userDao.find(id);
+		Connection conn = JdbcHelper.getConn();
+		User user = userDao.find(id,conn);
+		conn.close();
+		return user;
 	}
 	
-	public boolean updateUser(User user,Connection conn) throws SQLException {
-		return userDao.update(user,conn);
+	public boolean updateUser(User user) throws SQLException {
+		Connection conn = JdbcHelper.getConn();
+		boolean update = userDao.update(user,conn);
+		conn.close();
+		return update;
 	}
 	
-	public int addUser(User user,Connection conn) throws SQLException{
-			return userDao.add(user,conn);
+	public int addUser(User user) throws SQLException{
+		Connection conn = JdbcHelper.getConn();
+		int add = userDao.add(user,conn);
+		conn.close();
+		return add;
 	}
 
 	public boolean deleteUser(Integer id) throws SQLException {
-		return userDao.delete(id);
+		Connection conn = JdbcHelper.getConn();
+		boolean delete =  userDao.delete(id,conn);
+		conn.close();
+		return delete;
 	}
-	
-	
-	/*public User login(String username, String password) throws SQLException {
-		Collection<User> users = this.getUsers();
-		User desiredUser = null;
-		for(User user:users){
-			if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
-				desiredUser = user;
-			}
-		}
-		return desiredUser;
-	}	*/
+
+	public Actor login(User userToLogin) throws SQLException {
+		Connection connection = JdbcHelper.getConn();
+		Actor actor = userDao.login(connection, userToLogin);
+		connection.close();
+		return actor;
+	}
 }

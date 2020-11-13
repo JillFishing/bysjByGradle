@@ -33,6 +33,13 @@ public class User implements Comparable<User>,Serializable{
 		this.id = id;
 	}
 
+	public User(int id, String username, String password, Actor actor) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.actor = actor;
+	}
+
 	/**
 	 * Constructs a <code>String</code> with all attributes
 	 * in name = value format.
