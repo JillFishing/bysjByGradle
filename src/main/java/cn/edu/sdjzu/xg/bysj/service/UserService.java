@@ -42,11 +42,11 @@ public final class UserService {
 		return update;
 	}
 	
-	public int addUser(User user) throws SQLException{
+	public String addUser(User user) throws SQLException{
 		Connection conn = JdbcHelper.getConn();
-		int add = userDao.add(user,conn);
+		String token = userDao.add(user,conn);
 		conn.close();
-		return add;
+		return token;
 	}
 
 	public boolean deleteUser(Integer id) throws SQLException {

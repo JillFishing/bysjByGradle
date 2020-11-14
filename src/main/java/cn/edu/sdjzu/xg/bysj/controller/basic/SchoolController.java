@@ -2,8 +2,13 @@ package cn.edu.sdjzu.xg.bysj.controller.basic;
 //201902104050 姜瑞临
 import cn.edu.sdjzu.xg.bysj.domain.School;
 import cn.edu.sdjzu.xg.bysj.service.SchoolService;
+import cn.edu.sdjzu.xg.bysj.service.UserService;
 import com.alibaba.fastjson.*;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import util.JSONUtil;
@@ -67,6 +72,7 @@ public class SchoolController extends HttpServlet {
         //响应message到前端
         response.getWriter().println(message);
     }
+
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -97,27 +103,39 @@ public class SchoolController extends HttpServlet {
         //设置响应字符编码为UTF-8
         response.setContentType("application/json;charset=UTF-8");
         try {
+            String token = request.getHeader("token");
+            JWTVerifier build = JWT.require(Algorithm.HMAC256("114514")).build();
+            DecodedJWT verify = build.verify(token);
+            System.out.println(verify.getClaim("username").asString());
+            System.out.println(UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername());
+            boolean confirm = verify.getClaim("username").asString().equals(
+                    UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername());
+
             String condition = null;
             Pagination pagination = null;
             //如果id = null, 表示响应所有学院对象，否则响应id指定的学院对象
             String dept_json = JSONUtil.getJSON(request);
-            System.out.println(dept_json);
-            if (dept_json.equals("")){
-                responseSchoolsJSON(response,condition,pagination);
-            }else {
-                if (JSON.parseObject(dept_json).getJSONObject("id") != null){
-                    int id = JSON.parseObject(dept_json).getJSONObject("id").getInteger("id");
-                    responseSchoolJSON(id, response);
+
+            if (confirm){
+                if (dept_json.equals("")){
+                    responseSchoolsJSON(response,condition,pagination);
                 }else {
-                    JSONObject jsonArray = JSON.parseObject(dept_json);
-                    if (jsonArray.getObject("pagination",Pagination.class) != null){
-                        pagination = jsonArray.getObject("pagination",Pagination.class);
+                    if (JSON.parseObject(dept_json).getJSONObject("id") != null){
+                        int id = JSON.parseObject(dept_json).getJSONObject("id").getInteger("id");
+                        responseSchoolJSON(id, response);
+                    }else {
+                        JSONObject jsonArray = JSON.parseObject(dept_json);
+                        if (jsonArray.getObject("pagination",Pagination.class) != null){
+                            pagination = jsonArray.getObject("pagination",Pagination.class);
+                        }
+                        if (jsonArray.get("condition") != null){
+                            condition = JSON.parseObject(dept_json).getJSONArray("condition").toString();
+                        }
+                        this.responseSchoolsJSON(response,condition,pagination);
                     }
-                    if (jsonArray.get("condition") != null){
-                        condition = JSON.parseObject(dept_json).getJSONArray("condition").toString();
-                    }
-                    this.responseSchoolsJSON(response,condition,pagination);
                 }
+            }else {
+                logger.error("Exception occurs! You have no permission!");
             }
         }catch (SQLException e){
             //响应message到前端

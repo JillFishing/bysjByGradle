@@ -55,7 +55,7 @@ public class StudentController extends HttpServlet {
                 }else {
                     if (JSON.parseObject(student_json).getJSONObject("id") != null){
                         int id = JSON.parseObject(student_json).getJSONObject("id").getInteger("id");
-                        responseStudent(id, response);
+                        responseStudent(id,response);
                     }else {
                         if (jsonObject.getObject("pagination",Pagination.class) != null){
                             pagination = jsonObject.getObject("pagination",Pagination.class);
@@ -123,6 +123,7 @@ public class StudentController extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         //设置请求字符编码为UTF-8
         request.setCharacterEncoding("UTF-8");
+        String token = null;
         //根据request对象，获得代表参数的JSON字串
         String deg_json = JSONUtil.getJSON(request);
         //将JSON字串解析为GPT对象
@@ -131,7 +132,7 @@ public class StudentController extends HttpServlet {
         JSONObject message = new JSONObject();
         //在数据库表中增加GPT对象
         try {
-            StudentService.getInstance().add(beAdd);
+            token = StudentService.getInstance().add(beAdd);
             message.put("message", "增加成功");
         }catch (SQLException e){
             message.put("message", "数据库操作异常");
@@ -141,6 +142,7 @@ public class StudentController extends HttpServlet {
             logger.error(e.getMessage());
         }//响应message到前端
         response.getWriter().println(message);
+        response.getWriter().println("token为 "+ token);
     }
 
     /**

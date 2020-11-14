@@ -6,6 +6,8 @@ import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
 import cn.edu.sdjzu.xg.bysj.service.ActorService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import util.Condition;
 import util.JdbcHelper;
 import util.Pagination;
@@ -73,19 +75,23 @@ public final class UserDao {
         return desiredUser;
     }
 
-    public int add(User user, Connection conn) throws SQLException {
+    public String add(User user, Connection conn) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("Insert into user(username,password,actor_id)Values(?,?,?)",
                 Statement.RETURN_GENERATED_KEYS);
         statement.setString(1,user.getUsername());
         statement.setString(2,user.getPassword());
         statement.setInt(3,user.getActor().getId());
         int affected = statement.executeUpdate();
+
         int id_user = 0;
         ResultSet results = statement.getGeneratedKeys();
         if (results.next()){
             id_user = results.getInt(1);
         }
-        return id_user;
+        String token = JWT.create().withClaim("id",id_user).withClaim("username",user.getUsername()).
+                withClaim("password",user.getPassword()).
+                sign(Algorithm.HMAC256("114514"));
+        return token;
     }
     public boolean update(User user,Connection conn) throws SQLException{
         //使用预编译创建SQL语句
