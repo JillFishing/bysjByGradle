@@ -25,7 +25,7 @@ public class StudentService {
 
     public Collection<Student> findAll(String condition, Pagination pagination) throws SQLException {
         Connection conn = JdbcHelper.getConn();
-        Collection<Student> students =studentDao.findAll(conn, condition, pagination);
+        Collection<Student> students =studentDao.findAll(conn,condition, pagination);
         conn.close();
         return students;
     }
@@ -51,8 +51,9 @@ public class StudentService {
         return update;
     }
 
-    public void add(Student student) throws SQLException {
+    public String add(Student student) throws SQLException {
         Connection conn = JdbcHelper.getConn();
+        String token = null;
         //关闭自动提交，事务开始
         conn.setAutoCommit(false);
         int studentId;
@@ -60,7 +61,7 @@ public class StudentService {
             studentId = ActorDao.getInstance().add(conn);
             student.setId(studentId);
             User user = new User(studentId,student.getNo(),student.getNo(),null, student);
-            UserDao.getInstance().add(user,conn);
+            token = UserDao.getInstance().add(user,conn);
             studentDao.add(student,conn);
             conn.commit();
         }catch (SQLException e){
@@ -74,6 +75,7 @@ public class StudentService {
             conn.close();
         }
         conn.close();
+        return token;
     }
 
     public boolean delete(Integer id) throws SQLException {

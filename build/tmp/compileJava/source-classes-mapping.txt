@@ -1,5 +1,5 @@
-cn/edu/sdjzu/xg/bysj/service/StudentService.java
- cn.edu.sdjzu.xg.bysj.service.StudentService
+cn/edu/sdjzu/xg/bysj/controller/basic/StudentController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.StudentController
 cn/edu/sdjzu/xg/bysj/controller/basic/TeacherController.java
  cn.edu.sdjzu.xg.bysj.controller.basic.TeacherController
 cn/edu/sdjzu/xg/bysj/domain/GraduateProject.java
@@ -50,8 +50,8 @@ cn/edu/sdjzu/xg/bysj/dao/DegreeDao.java
  cn.edu.sdjzu.xg.bysj.dao.DegreeDao
 cn/edu/sdjzu/xg/bysj/dao/MajorDao.java
  cn.edu.sdjzu.xg.bysj.dao.MajorDao
-cn/edu/sdjzu/xg/bysj/service/TeacherService.java
- cn.edu.sdjzu.xg.bysj.service.TeacherService
+cn/edu/sdjzu/xg/bysj/domain/GraduateProjectType.java
+ cn.edu.sdjzu.xg.bysj.domain.GraduateProjectType
 cn/edu/sdjzu/xg/bysj/controller/basic/ApplicationForSupervisorController.java
  cn.edu.sdjzu.xg.bysj.controller.basic.ApplicationForSupervisorController
 cn/edu/sdjzu/xg/bysj/service/ActorAssRoleService.java
@@ -70,8 +70,8 @@ cn/edu/sdjzu/xg/bysj/service/DegreeService.java
  cn.edu.sdjzu.xg.bysj.service.DegreeService
 cn/edu/sdjzu/xg/bysj/service/GraduateProjectService.java
  cn.edu.sdjzu.xg.bysj.service.GraduateProjectService
-cn/edu/sdjzu/xg/bysj/controller/basic/StudentController.java
- cn.edu.sdjzu.xg.bysj.controller.basic.StudentController
+cn/edu/sdjzu/xg/bysj/domain/User.java
+ cn.edu.sdjzu.xg.bysj.domain.User
 cn/edu/sdjzu/xg/bysj/domain/authority/Actor.java
  cn.edu.sdjzu.xg.bysj.domain.authority.Actor
 cn/edu/sdjzu/xg/bysj/domain/Major.java
@@ -116,12 +116,12 @@ cn/edu/sdjzu/xg/bysj/service/SchoolService.java
  cn.edu.sdjzu.xg.bysj.service.SchoolService
 cn/edu/sdjzu/xg/bysj/domain/authority/Resource.java
  cn.edu.sdjzu.xg.bysj.domain.authority.Resource
-cn/edu/sdjzu/xg/bysj/service/UserService.java
- cn.edu.sdjzu.xg.bysj.service.UserService
+cn/edu/sdjzu/xg/bysj/service/ProfTitleService.java
+ cn.edu.sdjzu.xg.bysj.service.ProfTitleService
 cn/edu/sdjzu/xg/bysj/service/GraduateProjectTypeService.java
  cn.edu.sdjzu.xg.bysj.service.GraduateProjectTypeService
-cn/edu/sdjzu/xg/bysj/dao/UserDao.java
- cn.edu.sdjzu.xg.bysj.dao.UserDao
+cn/edu/sdjzu/xg/bysj/controller/basic/LoginController.java
+ cn.edu.sdjzu.xg.bysj.controller.basic.LoginController
 cn/edu/sdjzu/xg/bysj/dao/ActorAssRoleDao.java
  cn.edu.sdjzu.xg.bysj.dao.ActorAssRoleDao
 cn/edu/sdjzu/xg/bysj/domain/GraduateProjectStatus.java
@@ -140,13 +140,13 @@ cn/edu/sdjzu/xg/bysj/dao/SchoolDao.java
  cn.edu.sdjzu.xg.bysj.dao.SchoolDao
 cn/edu/sdjzu/xg/bysj/dao/DepartmentDao.java
  cn.edu.sdjzu.xg.bysj.dao.DepartmentDao
-cn/edu/sdjzu/xg/bysj/service/ProfTitleService.java
- cn.edu.sdjzu.xg.bysj.service.ProfTitleService
-cn/edu/sdjzu/xg/bysj/controller/basic/LoginController.java
- cn.edu.sdjzu.xg.bysj.controller.authority.LoginController
+cn/edu/sdjzu/xg/bysj/service/StudentService.java
+ cn.edu.sdjzu.xg.bysj.service.StudentService
+cn/edu/sdjzu/xg/bysj/service/TeacherService.java
+ cn.edu.sdjzu.xg.bysj.service.TeacherService
+cn/edu/sdjzu/xg/bysj/service/UserService.java
+ cn.edu.sdjzu.xg.bysj.service.UserService
+cn/edu/sdjzu/xg/bysj/dao/UserDao.java
+ cn.edu.sdjzu.xg.bysj.dao.UserDao
 cn/edu/sdjzu/xg/bysj/controller/basic/SchoolController.java
  cn.edu.sdjzu.xg.bysj.controller.basic.SchoolController
-cn/edu/sdjzu/xg/bysj/domain/GraduateProjectType.java
- cn.edu.sdjzu.xg.bysj.domain.GraduateProjectType
-cn/edu/sdjzu/xg/bysj/domain/User.java
- cn.edu.sdjzu.xg.bysj.domain.User

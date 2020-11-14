@@ -1,4 +1,4 @@
-package cn.edu.sdjzu.xg.bysj.controller.authority;
+package cn.edu.sdjzu.xg.bysj.controller.basic;
 
 import cn.edu.sdjzu.xg.bysj.domain.User;
 import cn.edu.sdjzu.xg.bysj.domain.authority.Actor;
@@ -9,6 +9,12 @@ import cn.edu.sdjzu.xg.bysj.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.impl.JWTParser;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import util.JSONUtil;
 
 import javax.servlet.ServletException;
@@ -19,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.TreeSet;
 
 /**
@@ -31,16 +38,6 @@ import java.util.TreeSet;
  */
 @WebServlet("/login.ctl")
 public class LoginController extends HttpServlet {
-    /**
-     * GET, http://localhost:8080/actor.ctl?id=1, 查询id=1的学院
-     * GET, http://localhost:8080/actor.ctl, 查询所有的学院
-     * 把一个或所有学院对象响应到前端
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,7 +49,6 @@ public class LoginController extends HttpServlet {
         String user_json = JSONUtil.getJSON(request);
         //将JSON字串解析为User对象
         User userToLogin = JSON.parseObject(user_json, User.class);
-
         //创建JSON对象message，以便往前端响应信息
         JSONObject message = new JSONObject();
 
@@ -68,6 +64,7 @@ public class LoginController extends HttpServlet {
                     Role role = actorAssRole.getRole();
                     roles.add(role);
                 }
+
                 message.put("actor", currentActor);
                 message.put("roles", roles);
                 //输出JSON字串时，屏蔽某些字段
