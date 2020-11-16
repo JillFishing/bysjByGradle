@@ -26,7 +26,6 @@ import java.util.Collection;
 @WebServlet("/school.ctl")
 public class SchoolController extends HttpServlet {
     Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -103,20 +102,20 @@ public class SchoolController extends HttpServlet {
         //设置响应字符编码为UTF-8
         response.setContentType("application/json;charset=UTF-8");
         try {
-            String token = request.getHeader("token");
+            /*String token = request.getHeader("token");
             JWTVerifier build = JWT.require(Algorithm.HMAC256("114514")).build();
             DecodedJWT verify = build.verify(token);
-            System.out.println(verify.getClaim("username").asString());
-            System.out.println(UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername());
+            verify.getClaim("username").asString();
+            UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername();
             boolean confirm = verify.getClaim("username").asString().equals(
-                    UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername());
+                    UserService.getInstance().getUser(verify.getClaim("id").asInt()).getUsername());*/
 
             String condition = null;
             Pagination pagination = null;
             //如果id = null, 表示响应所有学院对象，否则响应id指定的学院对象
             String dept_json = JSONUtil.getJSON(request);
 
-            if (confirm){
+            //if (confirm){
                 if (dept_json.equals("")){
                     responseSchoolsJSON(response,condition,pagination);
                 }else {
@@ -134,9 +133,9 @@ public class SchoolController extends HttpServlet {
                         this.responseSchoolsJSON(response,condition,pagination);
                     }
                 }
-            }else {
+           /* }else {
                 logger.error("Exception occurs! You have no permission!");
-            }
+            }*/
         }catch (SQLException e){
             //响应message到前端
             logger.error("SQLException occurs!"+e.getMessage());
