@@ -148,9 +148,9 @@ cn/edu/sdjzu/xg/bysj/service/UserService.java
  cn.edu.sdjzu.xg.bysj.service.UserService
 cn/edu/sdjzu/xg/bysj/dao/UserDao.java
  cn.edu.sdjzu.xg.bysj.dao.UserDao
-Filter/JWTFilter.java
- Filter.JWTFilter
-Filter/DelFilter.java
- Filter.DelFilter
 cn/edu/sdjzu/xg/bysj/controller/basic/SchoolController.java
  cn.edu.sdjzu.xg.bysj.controller.basic.SchoolController
+Filter/DelFilter.java
+ Filter.DelFilter
+Filter/JWTFilter.java
+ Filter.JWTFilter
