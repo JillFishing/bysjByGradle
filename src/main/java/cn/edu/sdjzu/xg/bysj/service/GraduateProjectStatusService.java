@@ -4,7 +4,10 @@ package cn.edu.sdjzu.xg.bysj.service;
 import cn.edu.sdjzu.xg.bysj.dao.GraduateProjectStatusDao;
 import cn.edu.sdjzu.xg.bysj.domain.GraduateProject;
 import cn.edu.sdjzu.xg.bysj.domain.GraduateProjectStatus;
+import util.JdbcHelper;
+import util.Pagination;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -12,40 +15,44 @@ public final class GraduateProjectStatusService {
 	private static GraduateProjectStatusDao graduateProjectStatusDao= GraduateProjectStatusDao.getInstance();
 	private static GraduateProjectStatusService graduateProjectStatusService=new GraduateProjectStatusService();
 
-
 	public static GraduateProjectStatusService getInstance(){
 		return graduateProjectStatusService;
 	}
 
-	public Collection<GraduateProjectStatus> findAll(){
-		return graduateProjectStatusDao.findAll();
+	//获取所有课题
+	public Collection<GraduateProjectStatus> findAll(String condition, Pagination pagination)throws SQLException{
+		Connection conn = JdbcHelper.getConn();
+		Collection<GraduateProjectStatus> gps = graduateProjectStatusDao.findAll(conn, condition, pagination);
+		conn.close();
+		return gps;
+	}
+	//获得id对应的课题
+	public GraduateProjectStatus find(Integer id)throws SQLException {
+		Connection conn = JdbcHelper.getConn();
+		GraduateProjectStatus gp = graduateProjectStatusDao.find(id,conn);
+		conn.close();
+		return gp;
 	}
 
-	public GraduateProjectStatus find(Integer id){
-		return graduateProjectStatusDao.find(id);
+	//增加一个课题
+	public boolean add(GraduateProjectStatus project)throws SQLException{
+		Connection conn = JdbcHelper.getConn();
+		boolean added = graduateProjectStatusDao.add(project,conn);
+		conn.close();
+		return added;
 	}
-
-	public boolean update(GraduateProjectStatus graduateProjectStatus){
-		return graduateProjectStatusDao.update(graduateProjectStatus);
+	//更新一个课题
+	public boolean update(GraduateProjectStatus project)throws SQLException{
+		Connection conn = JdbcHelper.getConn();
+		boolean update = graduateProjectStatusDao.update(project,conn);
+		conn.close();
+		return update;
 	}
-
-	public boolean add(GraduateProjectStatus graduateProjectStatus){
-		return graduateProjectStatusDao.add(graduateProjectStatus);
+	//删除一个课题
+	public boolean delete(int id)throws SQLException{
+		Connection conn = JdbcHelper.getConn();
+		boolean delete = graduateProjectStatusDao.delete(id,conn);
+		conn.close();
+		return delete;
 	}
-
-	/*public boolean delete(Integer id)throws SQLException{
-		GraduateProjectStatus graduateProjectStatus = this.find(id);
-		return this.delete(graduateProjectStatus);
-	}
-
-	public boolean delete(GraduateProjectStatus graduateProjectStatus)throws SQLException {
-		//获得所有处于本状态的课题（GraduateProject）
-		Collection<GraduateProject> graduateProjectSet = GraduateProjectService.getInstance().findAll(graduateProjectStatus);
-		//若没有处于本状态的课题，则能够删除
-		if(graduateProjectSet.size()==0){
-			return graduateProjectStatusDao.delete(graduateProjectStatus);
-		}else {
-			return false;
-		}
-	}*/
 }

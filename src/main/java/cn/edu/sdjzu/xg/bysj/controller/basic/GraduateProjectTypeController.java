@@ -1,12 +1,19 @@
 package cn.edu.sdjzu.xg.bysj.controller.basic;
 //201902104050 姜瑞临
+import cn.edu.sdjzu.xg.bysj.domain.GraduateProject;
 import cn.edu.sdjzu.xg.bysj.domain.GraduateProjectType;
 import cn.edu.sdjzu.xg.bysj.domain.School;
+import cn.edu.sdjzu.xg.bysj.service.GraduateProjectService;
 import cn.edu.sdjzu.xg.bysj.service.GraduateProjectTypeService;
 import cn.edu.sdjzu.xg.bysj.service.SchoolService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import util.JSONUtil;
+import util.Pagination;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
 
 @WebServlet("/GPT.ctl")
 public class GraduateProjectTypeController extends HttpServlet {
+    Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         //设置响应字符编码为UTF-8
@@ -43,25 +52,37 @@ public class GraduateProjectTypeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        //设置响应字符编码为UTF-8
-        response.setContentType("application/json;charset=UTF-8");
-        //读取参数id
-        String id_str = request.getParameter("id");
         try {
-            //如果id = null, 表示响应所有GraduateProjectController对象，否则响应id指定的GraduateProjectController对象
-            if (id_str == null) {
-                GraduateProjectTypesJSON(response);
-            } else {
-                //根据id查找某个GraduateProjectController
-                int id = Integer.parseInt(id_str);
-                GraduateProjectTypeJSON(id, response);
+            String condition = null;
+            Pagination pagination = null;
+            //如果id = null, 表示响应所有学院对象，否则响应id指定的学院对象
+            String gpt_json = JSONUtil.getJSON(request);
+            System.out.println(gpt_json);
+            if (gpt_json.equals("")){
+                GraduateProjectTypesJSON(response,condition,pagination);
+            }else {
+                if (JSON.parseObject(gpt_json).getJSONObject("id") != null){
+                    int id = JSON.parseObject(gpt_json).getJSONObject("id").getInteger("id");
+                    GraduateProjectTypeJSON(id, response);
+                }else {
+                    JSONObject jsonArray = JSON.parseObject(gpt_json);
+                    if (jsonArray.getObject("pagination",Pagination.class) != null){
+                        pagination = jsonArray.getObject("pagination",Pagination.class);
+                    }
+                    if (jsonArray.get("condition") != null){
+                        condition = JSON.parseObject(gpt_json).getJSONArray("condition").toString();
+                    }
+                    this.GraduateProjectTypesJSON(response,condition,pagination);
+                }
             }
         }catch (SQLException e){
             //响应message到前端
             response.getWriter().println("SQLException occurs!"+e.getMessage());
+            logger.error(e.getMessage());
         }catch(Exception e){
             //响应message到前端
             response.getWriter().println("Exception occurs!"+e.getMessage());
+            logger.error(e.getMessage());
         }
     }@Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -116,9 +137,10 @@ public class GraduateProjectTypeController extends HttpServlet {
         //响应school到前端
         response.getWriter().println(school_json);
     }
-    private void GraduateProjectTypesJSON(HttpServletResponse response)
+    private void GraduateProjectTypesJSON(HttpServletResponse response,String condition, Pagination pagination)
             throws IOException, SQLException {
-        //响应所有GPT到前端
-        response.getWriter().println(GraduateProjectTypeService.getInstance().findAll());
+        Collection<GraduateProjectType> gps = GraduateProjectTypeService.getInstance().findAll(condition,pagination);
+        String gps_json = JSON.toJSONString(gps, SerializerFeature.DisableCircularReferenceDetect);
+        response.getWriter().println(gps_json);
     }
 }

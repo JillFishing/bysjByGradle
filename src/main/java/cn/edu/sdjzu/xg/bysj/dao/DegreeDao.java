@@ -1,10 +1,6 @@
 package cn.edu.sdjzu.xg.bysj.dao;
 
-
 import cn.edu.sdjzu.xg.bysj.domain.Degree;
-import cn.edu.sdjzu.xg.bysj.domain.Department;
-import cn.edu.sdjzu.xg.bysj.domain.School;
-import cn.edu.sdjzu.xg.bysj.service.SchoolService;
 import util.Condition;
 import util.JdbcHelper;
 import util.Pagination;

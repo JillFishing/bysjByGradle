@@ -20,9 +20,12 @@ public final class GraduateProject implements Comparable<GraduateProject>,Serial
 
 
 
-	public GraduateProject(int id, String title,
-                           GraduateProjectCategory graduateProjectCategory, GraduateProjectType graduateProjectType,
-                           GraduateProjectStatus graduateProjectStatus, Teacher teacher) {
+	public GraduateProject(int id,
+						   String title,
+                           GraduateProjectCategory graduateProjectCategory,
+						   GraduateProjectType graduateProjectType,
+                           GraduateProjectStatus graduateProjectStatus,
+						   Teacher teacher) {
 		this(title, graduateProjectCategory, graduateProjectType,graduateProjectStatus,teacher);
 		this.id = id;
 	}

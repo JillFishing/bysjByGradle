@@ -53,8 +53,6 @@ public final class TeacherService {
 		conn.setAutoCommit(false);
 		int teacherId = 0;
 		try{
-			//在正式添加之前首先判断重复性
-			teacherDao.duplicateCheck(teacher,conn);
 			teacherId = teacherDao.add(teacher,conn);
 			teacher.setId(teacherId);
 			User user = new User(teacher.getNo(),teacher.getNo(),null, teacher);
